@@ -15,6 +15,6 @@ public class Player : MonoBehaviour
         float MovementX = Input.GetAxis("Horizontal");
         float MovementY = Input.GetAxis("Vertical");
 
-        rb.velocity = new Vector2(MovementX * speed, MovementY * speed);
+        rb.velocity = new Vector2(MovementX, MovementY).normalized * speed;
     }
 }
