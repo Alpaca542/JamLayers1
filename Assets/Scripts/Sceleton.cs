@@ -31,12 +31,12 @@ public class Sceleton : MonoBehaviour
     private void Update()
     {
         //Rotate to the player's side
-        if (agent.velocity.x > 0 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
+        if (agent.velocity.x > 0.2 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             //rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
         }
-        else if(agent.velocity.x < 0 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, -180)) && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 180)))
+        else if(agent.velocity.x < -0.2 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, -180)) && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 180)))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             //rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
