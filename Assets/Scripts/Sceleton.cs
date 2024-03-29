@@ -34,12 +34,12 @@ public class Sceleton : MonoBehaviour
         if (agent.velocity.x > 0 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            //rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
         }
         else if(agent.velocity.x < 0 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, -180)) && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 180)))
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+            //rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
         }
     }
 }
