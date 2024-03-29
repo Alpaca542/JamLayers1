@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     {
         float MovementX = Input.GetAxis("Horizontal");
         float MovementY = Input.GetAxis("Vertical");
-        if(MovementX < 0 && transform.rotation != Quaternion.Euler(0, 180, 0))
+        if(MovementX < 0 && transform.rotation != Quaternion.Euler(0, 180, 0) && transform.rotation != Quaternion.Euler(0, -180, 0))
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
