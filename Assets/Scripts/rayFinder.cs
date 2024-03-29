@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class rayFinder : MonoBehaviour
@@ -15,6 +16,7 @@ public class rayFinder : MonoBehaviour
 
     [Header("Parameters")]
     public float HowFastLoose = 3f;
+    public LayerMask WhatToHit;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -44,21 +46,68 @@ public class rayFinder : MonoBehaviour
     }
     private void Update()
     {
-        //Look at the player
-        //transform.right = player.transform.position - transform.position;
+        float maxDistance = 5f;
 
-        //color indicators
+        // Raycast 1
+        Vector2 direction1 = new Vector2(-2.3374f, -5.1216f).normalized;
+        Debug.DrawRay(transform.position, direction1 * maxDistance, Color.red);
+
+        // Raycast 2
+        Vector2 direction2 = new Vector2(-1.1687f, -5.1216f).normalized;
+        Debug.DrawRay(transform.position, direction2 * maxDistance, Color.green);
+
+        // Raycast 3
+        Vector2 direction3 = new Vector2(0f, -5.1216f).normalized;
+        Debug.DrawRay(transform.position, direction3 * maxDistance, Color.blue);
+
+        // Raycast 4
+        Vector2 direction4 = new Vector2(1.1687f, -5.1216f).normalized;
+        Debug.DrawRay(transform.position, direction4 * maxDistance, Color.yellow);
+
+        // Raycast 5
+        Vector2 direction5 = new Vector2(2.3374f, -5.1216f).normalized;
+        Debug.DrawRay(transform.position, direction5 * maxDistance, Color.magenta);
+
+        //Send the rays
+        RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.TransformPoint(new Vector2(-2.3374f, -5.1216f)), 5f, WhatToHit);
+        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.TransformPoint(new Vector2(-1.1687f, -5.1216f)), 5f, WhatToHit);
+        RaycastHit2D hit3 = Physics2D.Raycast(transform.position, transform.TransformPoint(new Vector2(0, -5.1216f)), 5f, WhatToHit);
+        RaycastHit2D hit4 = Physics2D.Raycast(transform.position, transform.TransformPoint(new Vector2(1.1687f, -5.1216f)), 5f, WhatToHit);
+        RaycastHit2D hit5 = Physics2D.Raycast(transform.position, transform.TransformPoint(new Vector2(2.3374f, -5.1216f)), 5f, WhatToHit);
+        RaycastHit2D[] raylist = { hit1, hit2, hit3, hit4, hit5 };
+        //Check the ray
+        bool DoWeSee1 = false;
+        foreach (RaycastHit2D hit in raylist)
+        {
+            if(hit.collider != null)
+            {
+                if(hit.collider.gameObject.tag == "Player")
+                {
+                    DoWeSee1 = true;
+                }
+            }
+        }
+        if(DoWeSee1)
+        {
+            Debug.Log("We hit");
+            IsInSight = true;
+            IsClose = false;
+            NotFound = false;
+            var ListWithoutNulls = raylist.Where(n => n.collider.gameObject.tag == "Player").ToArray();
+            sceleton.GetComponent<Sceleton>().SawAPlayer(ListWithoutNulls[0].collider.gameObject);
+        }
+        //Color indicators
         if (IsInSight)
         {
-            GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 61); //red
+            GetComponent<Light>().color = new Color32(255, 0, 0, 61); //red
         }
         else if (IsClose)
         {
-            GetComponent<SpriteRenderer>().color = new Color32(255, 255, 0, 61); //yellow
+            GetComponent<Light>().color = new Color32(255, 255, 0, 61); //yellow
         }
         else if (NotFound)
         {
-            GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 61); //white
+            GetComponent<Light>().color = new Color32(255, 255, 255, 61); //white
         }
     }
 }
