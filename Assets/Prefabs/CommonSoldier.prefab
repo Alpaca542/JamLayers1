@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3321335606477482438}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0.74504435, w: 0.66701496}
   m_LocalPosition: {x: 0.294, y: 0.156, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 51.04
   m_PointLightOuterAngle: 51.04
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 10.1289015
+  m_PointLightOuterRadius: 3
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -292,7 +292,7 @@ MonoBehaviour:
   IsClose: 0
   NotFound: 0
   HowFastLoose: 3
-  RayLength: 7
+  RayLength: 3
   WhatToHit:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -507,6 +507,10 @@ MonoBehaviour:
   anim: {fileID: 5238401470448330645}
   rayFinder: {fileID: 3321335606477482438}
   player: {fileID: 0}
+  AmIChasing: 0
+  start: {fileID: 0}
+  finish: {fileID: 0}
+  ToFinish: 1
 --- !u!50 &2204371375896987184
 Rigidbody2D:
   serializedVersion: 4

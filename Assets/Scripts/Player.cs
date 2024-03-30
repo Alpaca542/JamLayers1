@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Parameters")]
     public float speed = 5f;
-    public float jumpforce = 5f;
-    public Rigidbody2D rb;
+    bool AmIDead = false;
 
-    public bool IsGrounded = false;
+    [Header("Debug")]
+    public Rigidbody2D rb;
+    public Animator anim1;
+    public AnimationClip clipDie;
+    public DieManager diemng;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "ground")
-        {
-            IsGrounded = true;
-        }
     }
     void Update()
     {
@@ -33,11 +32,14 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         rb.velocity = new Vector2(MovementX, MovementY).normalized * speed;
-
-        //if (Input.GetKey(KeyCode.Space) && IsGrounded)
-        //{
-        //    IsGrounded = false;
-        //    rb.AddForce(Vector2.up * jumpforce);
-        //}
+    }
+    public void die()
+    {
+        if (!AmIDead)
+        {
+            AmIDead = true;
+            anim1.SetBool("Death", true);
+            diemng.ToTheMenu();
+        }
     }
 }

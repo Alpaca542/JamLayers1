@@ -50,29 +50,7 @@ public class rayFinder : MonoBehaviour
     }
     private void Update()
     {
-        //float maxDistance = 5f;
-
-        //// Raycast 1
-        //Vector2 direction1 = new Vector2(transform.forward.x - 2.3374f, transform.forward.y - 5.1216f);
-        //Debug.DrawRay(transform.position, direction1 * maxDistance, Color.red);
-
-        //// Raycast 2
-        //Vector2 direction2 = new Vector2(transform.forward.x - 1.1687f, transform.forward.y - 5.1216f);
-        //Debug.DrawRay(transform.position, direction2 * maxDistance, Color.green);
-
-        //// Raycast 3
-        //Vector2 direction3 = new Vector2(transform.forward.x, transform.forward.y - 5.1216f);
-        //Debug.DrawRay(transform.position, direction3 * maxDistance, Color.blue);
-
-        //// Raycast 4
-        //Vector2 direction4 = new Vector2(transform.forward.x + 1.1687f, transform.forward.y - 5.1216f);
-        //Debug.DrawRay(transform.position, direction4 * maxDistance, Color.yellow);
-
-        //// Raycast 5
-        //Vector2 direction5 = new Vector2(transform.forward.x + 2.3374f, transform.forward.y - 5.1216f);
-        //Debug.DrawRay(transform.position, direction5 * maxDistance, Color.magenta);
-
-        //Send the rays
+        //Send the checking rays
         RaycastHit2D hit1 = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(-2.3374f, 5.1216f)), RayLength, WhatToHit);
 
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(-1.1687f, 5.1216f)), RayLength, WhatToHit);
@@ -82,8 +60,13 @@ public class rayFinder : MonoBehaviour
         RaycastHit2D hit4 = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(1.1687f, 5.1216f)), RayLength, WhatToHit);
 
         RaycastHit2D hit5 = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(2.3374f, 5.1216f)), RayLength, WhatToHit);
+
         RaycastHit2D[] raylist = { hit1, hit2, hit3, hit4, hit5 };
-        //Check the ray
+
+        //Send the attack ray
+        RaycastHit2D hitAttack = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(0, 5.1216f)), 1.5f, WhatToHit);
+
+        //Check the checking rays
         bool DoWeSee1 = false;
         foreach (RaycastHit2D hit in raylist)
         {
@@ -111,6 +94,17 @@ public class rayFinder : MonoBehaviour
             IsClose = false;
             NotFound = true;
         }
+
+        //Chech the attack rays
+        if(hitAttack.collider != null)
+        {
+            if (hitAttack.collider.gameObject.tag == "Player")
+            {
+               sceleton.GetComponent<Sceleton>().KillPlayer();
+            }
+        }
+
+
         //Color indicators
         if (IsInSight)
         {

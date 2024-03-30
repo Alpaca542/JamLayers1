@@ -15,6 +15,7 @@ public class Sceleton : MonoBehaviour
 
     [Header("Debug")]
     public bool AmIChasing;
+    public AnimationClip[] clip;
 
     [Header("Walknig")]
     public GameObject start;
@@ -76,5 +77,11 @@ public class Sceleton : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
+    }
+    public void KillPlayer()
+    {
+        System.Random rnd = new System.Random();
+        anim.Play(clip[rnd.Next(0, clip.Length)].name);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().die();
     }
 }
