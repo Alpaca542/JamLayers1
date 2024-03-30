@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
         if (!AmIDead)
         {
             AmIDead = true;
-            anim1.SetBool("Death", true);
             diemng.ToTheMenu();
         }
     }
