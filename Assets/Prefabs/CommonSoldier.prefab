@@ -295,7 +295,7 @@ MonoBehaviour:
   RayLength: 3
   WhatToHit:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7340087
 --- !u!1 &4414554841350571679
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +508,7 @@ MonoBehaviour:
   rayFinder: {fileID: 3321335606477482438}
   player: {fileID: 0}
   AmIChasing: 0
-  clip: []
+  clipHit: {fileID: 0}
   start: {fileID: 0}
   finish: {fileID: 0}
   ToFinish: 1
