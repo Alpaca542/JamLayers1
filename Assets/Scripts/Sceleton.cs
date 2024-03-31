@@ -22,8 +22,6 @@ public class Sceleton : MonoBehaviour
     public GameObject finish;
     public bool ToFinish = true;
 
-    private static readonly int Horizontal = Animator.StringToHash("Horizontal");
-
     public void SawAPlayer(GameObject Target)
     {
         AmIChasing = true;
@@ -69,13 +67,38 @@ public class Sceleton : MonoBehaviour
 
 
         //Rotate to the player's side
-        if (agent.velocity.x > 0.2 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
+        float MaxVelocity = Mathf.Max(Mathf.Abs(agent.velocity.x), Mathf.Abs(agent.velocity.y));
+        if(MaxVelocity == Mathf.Abs(agent.velocity.x))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            if (agent.velocity.x > 0.2)
+            {
+                anim.SetFloat("Horizontal", 1);
+                if (transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, 360, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, -360, 0)))
+                {
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                }
+            }
+            else if (agent.velocity.x < -0.2)
+            {
+                anim.SetFloat("Horizontal", 1);
+                if(transform.rotation != Quaternion.Euler(new Vector3(0, -180, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, 180, 0)))
+                {
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
+            }
         }
-        else if(agent.velocity.x < -0.2 && transform.rotation != Quaternion.Euler(new Vector3(0, 0, -180)) && transform.rotation != Quaternion.Euler(new Vector3(0, 0, 180)))
+        else if(MaxVelocity == Mathf.Abs(agent.velocity.y))
         {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            if (agent.velocity.y > 0.2)
+            {
+                anim.SetFloat("Horizontal", 0);
+                anim.SetFloat("Vertical", 1);
+            }
+            else if (agent.velocity.y < -0.2)
+            {
+                anim.SetFloat("Horizontal", 0);
+                anim.SetFloat("Vertical", -1);
+            }
         }
     }
     public void KillPlayer()
