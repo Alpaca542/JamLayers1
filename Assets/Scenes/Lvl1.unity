@@ -41244,7 +41244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlobalSun: {fileID: 1043420828}
-  cursor: {fileID: 2800000, guid: 27962e3a162664486949477bf9d58327, type: 3}
+  cursor: {fileID: 2800000, guid: 3f6504863b5fa4a7093b2f18bdf9a982, type: 3}
   IsInMagicMode: 0
   lure: {fileID: 4338007971562068487, guid: 52e50789a30284856b1861656523a4d4, type: 3}
   btnks: {fileID: 899817458}

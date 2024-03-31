@@ -295,7 +295,7 @@ MonoBehaviour:
   RayLength: 3
   WhatToHit:
     serializedVersion: 2
-    m_Bits: 7340087
+    m_Bits: 7340095
 --- !u!1 &4414554841350571679
 GameObject:
   m_ObjectHideFlags: 0

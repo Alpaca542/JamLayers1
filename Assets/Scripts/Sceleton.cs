@@ -46,6 +46,10 @@ public class Sceleton : MonoBehaviour
         {
             ToFinish = !ToFinish;
         }
+        if(collision.gameObject.tag == "Lure")
+        {
+            Destroy(collision.gameObject);
+        }
     }
     private void Update()
     {
