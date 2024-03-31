@@ -42,21 +42,11 @@ public class MagicManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && IsInMagicMode && !btnks.isMouseOver)
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = new RaycastHit2D();
-            if(hit.collider != null)
-            {
-                if (!hit.collider.gameObject.name.Contains("Button"))
-                {
-                    Vector2 WhereClicked = hit.point;
-                    Instantiate(lure, WhereClicked, Quaternion.identity);
-                }
-            }
-            else
-            {
-                Vector2 WhereClicked = hit.point;
-                Instantiate(lure, WhereClicked, Quaternion.identity);
-            }
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.nearClipPlane;
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            worldMousePosition.z = 0;
+            Instantiate(lure, worldMousePosition, Quaternion.identity);
         }
     }
 }

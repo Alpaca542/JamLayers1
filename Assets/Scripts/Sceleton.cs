@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.AI;
 using NavMeshPlus;
 
@@ -16,6 +17,7 @@ public class Sceleton : MonoBehaviour
     [Header("Debug")]
     public bool AmIChasing;
     public AnimationClip clipHit;
+    public LayerMask LureLayer;
 
     [Header("Walking")]
     public GameObject start;
@@ -54,15 +56,21 @@ public class Sceleton : MonoBehaviour
         }
         else
         {
-            if (ToFinish)
+            if (Physics2D.OverlapCircle(transform.position, 5f, LureLayer))
             {
-                agent.SetDestination(finish.transform.position);
+                agent.SetDestination(GameObject.FindGameObjectWithTag("Lure").transform.position);
             }
             else
             {
-                agent.SetDestination(start.transform.position);
+                if (ToFinish)
+                {
+                    agent.SetDestination(finish.transform.position);
+                }
+                else
+                {
+                    agent.SetDestination(start.transform.position);
+                }
             }
-
         }
 
 

@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - Lure
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Lure
   - Water
   - UI
   - Ground

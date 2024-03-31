@@ -509,6 +509,9 @@ MonoBehaviour:
   player: {fileID: 0}
   AmIChasing: 0
   clipHit: {fileID: 0}
+  LureLayer:
+    serializedVersion: 2
+    m_Bits: 8
   start: {fileID: 0}
   finish: {fileID: 0}
   ToFinish: 1
