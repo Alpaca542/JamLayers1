@@ -64,7 +64,7 @@ public class rayFinder : MonoBehaviour
         RaycastHit2D[] raylist = { hit1, hit2, hit3, hit4, hit5 };
 
         //Send the attack ray
-        RaycastHit2D hitAttack = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(0, 5.1216f)), 1.5f, WhatToHit);
+        RaycastHit2D hitAttack = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(0, 5.1216f)), 1f, WhatToHit);
 
         //Check the checking rays
         bool DoWeSee1 = false;

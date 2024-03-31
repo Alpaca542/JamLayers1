@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 3321335606477482438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.74504435, w: 0.66701496}
-  m_LocalPosition: {x: 0.294, y: 0.156, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0.15, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -508,6 +508,7 @@ MonoBehaviour:
   rayFinder: {fileID: 3321335606477482438}
   player: {fileID: 0}
   AmIChasing: 0
+  clip: []
   start: {fileID: 0}
   finish: {fileID: 0}
   ToFinish: 1

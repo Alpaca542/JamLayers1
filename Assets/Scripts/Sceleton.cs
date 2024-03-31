@@ -15,7 +15,7 @@ public class Sceleton : MonoBehaviour
 
     [Header("Debug")]
     public bool AmIChasing;
-    public AnimationClip[] clip;
+    public AnimationClip clipHit;
 
     [Header("Walking")]
     public GameObject start;
@@ -70,18 +70,23 @@ public class Sceleton : MonoBehaviour
         float MaxVelocity = Mathf.Max(Mathf.Abs(agent.velocity.x), Mathf.Abs(agent.velocity.y));
         if(MaxVelocity == Mathf.Abs(agent.velocity.x))
         {
-            if (agent.velocity.x > 0.2)
+            if (agent.velocity.x > 1)
             {
                 anim.SetFloat("Horizontal", 1);
+                rayFinder.transform.position = transform.TransformPoint(new Vector2(0.3f, 0.15f));
+                rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+
                 if (transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, 360, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, -360, 0)))
                 {
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                 }
             }
-            else if (agent.velocity.x < -0.2)
+            else if (agent.velocity.x < -1)
             {
                 anim.SetFloat("Horizontal", 1);
-                if(transform.rotation != Quaternion.Euler(new Vector3(0, -180, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, 180, 0)))
+                rayFinder.transform.position = transform.TransformPoint(new Vector2(0.3f, 0.15f));
+                rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                if (transform.rotation != Quaternion.Euler(new Vector3(0, -180, 0)) && transform.rotation != Quaternion.Euler(new Vector3(0, 180, 0)))
                 {
                     transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 }
@@ -89,22 +94,29 @@ public class Sceleton : MonoBehaviour
         }
         else if(MaxVelocity == Mathf.Abs(agent.velocity.y))
         {
-            if (agent.velocity.y > 0.2)
+            if (agent.velocity.y > 1)
             {
                 anim.SetFloat("Horizontal", 0);
                 anim.SetFloat("Vertical", 1);
+                rayFinder.transform.position = transform.TransformPoint(new Vector2(0, 0.5f));
+                rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
-            else if (agent.velocity.y < -0.2)
+            else if (agent.velocity.y < -1)
             {
                 anim.SetFloat("Horizontal", 0);
                 anim.SetFloat("Vertical", -1);
+                rayFinder.transform.position = transform.TransformPoint(new Vector2(0, -0.15f));
+                rayFinder.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
             }
         }
     }
     public void KillPlayer()
     {
-        System.Random rnd = new System.Random();
-        anim.Play(clip[rnd.Next(0, clip.Length)].name);
+        anim.Play(clipHit.name);
+        Invoke(nameof(InvokeKill), 0.5f);
+    }
+    public void InvokeKill()
+    {
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().die();
     }
 }
