@@ -17,7 +17,7 @@ public class Sceleton : MonoBehaviour
     public bool AmIChasing;
     public AnimationClip[] clip;
 
-    [Header("Walknig")]
+    [Header("Walking")]
     public GameObject start;
     public GameObject finish;
     public bool ToFinish = true;
