@@ -63,9 +63,7 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "2";
         yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "1";
-        CurrentDoor.GetComponent<BoxCollider2D>().enabled = false;
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
-        Destroy(CurrentDoor);
         if (CurrentDoor.GetComponent<Door>().AmIFinal)
         {
             Time.timeScale = 0;
@@ -73,6 +71,11 @@ public class Player : MonoBehaviour
             panel.SetActive(true);
             btn.SetActive(false);
         }
+        foreach(BoxCollider2D col in CurrentDoor.GetComponents<BoxCollider2D>())
+        {
+            col.enabled = false;
+        }
+        CurrentDoor.GetComponent<Door>().txt.SetActive(false);
     }
     public void die()
     {
