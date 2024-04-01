@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class Menumanager : MonoBehaviour
 {
+    public GameObject sparks;
     public void StartTheGame(string lvlname)
     {
         SceneManager.LoadScene(lvlname);
     }
     public void OpenLevels()
+    {
+        Instantiate(sparks, Vector2.zero, Quaternion.identity);
+        Invoke(nameof(InvokeOpenScene), 0.6f);
+    }
+    public void InvokeOpenScene()
     {
         SceneManager.LoadScene("LvlMenu");
     }
