@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public AnimationClip clipDie;
     public DieManager diemng;
     public GameObject CurrentDoor;
+    private IEnumerator coroutine;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,11 +38,12 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(DeleteDoor());
+            coroutine = DeleteDoor();
+            StartCoroutine(coroutine);
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            StopCoroutine(DeleteDoor());
+            StopCoroutine(coroutine);
             CurrentDoor.GetComponent<Door>().txt.SetActive(false);
         }
     }
@@ -74,6 +76,14 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Door")
         {
             CurrentDoor = collision.gameObject;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Door")
+        {
+            StopCoroutine(coroutine);
+            CurrentDoor.GetComponent<Door>().txt.SetActive(false);
         }
     }
 }
