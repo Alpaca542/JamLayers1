@@ -5,5 +5,6 @@ using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
+    public bool AmIFinal;
     public GameObject txt;
 }

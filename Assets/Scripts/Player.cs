@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     public DieManager diemng;
     public GameObject CurrentDoor;
     private IEnumerator coroutine;
+    public Light2D sun;
+    public GameObject panel;
+    public GameObject btn;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,6 +66,13 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<BoxCollider2D>().enabled = false;
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
         Destroy(CurrentDoor);
+        if (CurrentDoor.GetComponent<Door>().AmIFinal)
+        {
+            Time.timeScale = 0;
+            sun.intensity = 1f;
+            panel.SetActive(true);
+            btn.SetActive(false);
+        }
     }
     public void die()
     {
@@ -82,6 +93,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Door")
         {
+            CurrentDoor = null;
             StopCoroutine(coroutine);
             CurrentDoor.GetComponent<Door>().txt.SetActive(false);
         }
