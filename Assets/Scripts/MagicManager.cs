@@ -8,6 +8,7 @@ public class MagicManager : MonoBehaviour
     public Light2D GlobalSun;
     public Texture2D cursor;
     public bool IsInMagicMode = false;
+    public int Ducks = 10;
 
     public GameObject lure;
     public ButtonKostil btnks;
@@ -50,7 +51,11 @@ public class MagicManager : MonoBehaviour
             mousePosition.z = Camera.main.nearClipPlane;
             Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             worldMousePosition.z = 0;
-            Instantiate(lure, worldMousePosition, Quaternion.identity);
+            if(Physics2D.OverlapCircle(worldMousePosition, 0.05f))
+            {
+                Ducks--;
+                Instantiate(lure, worldMousePosition, Quaternion.identity);
+            }
         }
     }
 }
