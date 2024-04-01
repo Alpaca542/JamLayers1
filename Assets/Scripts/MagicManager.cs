@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 
 public class MagicManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class MagicManager : MonoBehaviour
 
     public GameObject lure;
     public ButtonKostil btnks;
+    public Text duckstxt;
     public void MagicMode()
     {
         if (!IsInMagicMode)
@@ -45,7 +47,7 @@ public class MagicManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && IsInMagicMode && !btnks.isMouseOver)
+        if (Input.GetMouseButtonDown(0) && IsInMagicMode && !btnks.isMouseOver && Ducks > 0)
         {
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = Camera.main.nearClipPlane;
@@ -54,6 +56,7 @@ public class MagicManager : MonoBehaviour
             if(Physics2D.OverlapCircle(worldMousePosition, 0.05f))
             {
                 Ducks--;
+                duckstxt.text = Ducks.ToString();
                 Instantiate(lure, worldMousePosition, Quaternion.identity);
             }
         }

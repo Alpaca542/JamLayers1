@@ -2955,7 +2955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77.14, y: -161}
+  m_AnchoredPosition: {x: -0.000022888, y: -160.3}
   m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975592559
@@ -4472,8 +4472,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 346.6, y: -13.5}
-  m_SizeDelta: {x: 433, y: 283.1}
+  m_AnchoredPosition: {x: -258, y: -0.00010586}
+  m_SizeDelta: {x: 257.4, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052278385
 MonoBehaviour:
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4497,12 +4497,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 228694fd52f744dd192e577e1c0ef91f, type: 3}
-    m_FontSize: 239
+    m_FontSize: 225
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -45285,6 +45285,7 @@ MonoBehaviour:
   Ducks: 10
   lure: {fileID: 4338007971562068487, guid: 52e50789a30284856b1861656523a4d4, type: 3}
   btnks: {fileID: 899817458}
+  duckstxt: {fileID: 1052278385}
 --- !u!4 &1439038195
 Transform:
   m_ObjectHideFlags: 0
@@ -51880,7 +51881,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.662}
+  m_Offset: {x: -0.25927997, y: 0.10714066}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -51891,7 +51892,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.73, y: 1.2}
+  m_Size: {x: 1.3937552, y: 2.0400674}
   m_EdgeRadius: 0
 --- !u!50 &2081711887
 Rigidbody2D:
