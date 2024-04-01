@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering.Universal;
@@ -63,6 +64,7 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "2";
         yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "1";
+        CurrentDoor.GetComponent<Door>().txt.SetActive(false);
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
         if (CurrentDoor.GetComponent<Door>().AmIFinal)
         {
@@ -70,12 +72,12 @@ public class Player : MonoBehaviour
             sun.intensity = 1f;
             panel.SetActive(true);
             btn.SetActive(false);
+            PlayerPrefs.SetInt("Open", System.Convert.ToInt32(SceneManager.GetActiveScene().name.Replace("Lvl", ""))+1);
         }
         foreach(BoxCollider2D col in CurrentDoor.GetComponents<BoxCollider2D>())
         {
             col.enabled = false;
         }
-        CurrentDoor.GetComponent<Door>().txt.SetActive(false);
     }
     public void die()
     {

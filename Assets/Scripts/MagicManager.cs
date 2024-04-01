@@ -22,6 +22,10 @@ public class MagicManager : MonoBehaviour
             ExitMagicMode();
         }
     }
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
     public void EnterMagicMode()
     {
         Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
