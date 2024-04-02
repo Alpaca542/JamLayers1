@@ -13,7 +13,12 @@ public class TurorialManager : MonoBehaviour
     public GameObject btnContinue;
     public GameObject Panel;
     public GameObject cnv;
+    public GameObject rock;
     public float typingspeed = 0.02f;
+    public GameObject knight;
+    public GameObject robber;
+    public Sprite dieknight;
+    public Sprite dierobber;
 
     public GameObject player;
 
@@ -60,14 +65,18 @@ public class TurorialManager : MonoBehaviour
     }
     public void ContinueTyping()
     {
-        if(index == 13)
+        if (index == 4)
+        {
+            rock.SetActive(true);
+            knight.GetComponent<SpriteRenderer>().sprite = dieknight;
+            robber.GetComponent<SpriteRenderer>().sprite = dierobber;
+
+        }
+        if (index == 14 || index == 999)
         {
             cnv.SetActive(true);
             Camera.main.GetComponent<CameraFolllllllow>().enabled = true;
             player.GetComponent<Player>().enabled = true;
-        }
-        if(index+1 >= sentences.Length)
-        {
             Panel.SetActive(false);
         }
         else
@@ -75,5 +84,9 @@ public class TurorialManager : MonoBehaviour
             index++;
             StartCoroutine(Type());
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        StartCoroutine(Type());
     }
 }

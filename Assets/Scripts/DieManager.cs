@@ -7,6 +7,6 @@ public class DieManager : MonoBehaviour
 {
     public void ToTheMenu()
     {
-        SceneManager.LoadScene("Lvl1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

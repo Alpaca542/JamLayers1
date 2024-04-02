@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
 
 public class rayFinder : MonoBehaviour
@@ -22,32 +23,6 @@ public class rayFinder : MonoBehaviour
     public float RayLength = 7f;
     public LayerMask WhatToHit;
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            IsInSight = true;
-            IsClose = false;
-            NotFound = false;
-            sceleton.GetComponent<Sceleton>().SawAPlayer(collision.gameObject);
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            IsInSight = false;
-            IsClose = true;
-            NotFound = false;
-            Invoke(nameof(LostPlayer), HowFastLoose);
-        }
-    }
-    public void LostPlayer()
-    {
-        IsInSight = false;
-        IsClose = false;
-        NotFound = true;
-    }
     private void Update()
     {
         //Send the checking rays
@@ -82,7 +57,7 @@ public class rayFinder : MonoBehaviour
         {
             Debug.Log("We hit");
             IsInSight = true;
-            IsClose = false;
+            IsClose = true;
             NotFound = false;
             ListWithoutNulls = raylist.Where(n => n.collider != null).ToArray();
             ListWithoutNulls2 = ListWithoutNulls.Where(n => n.collider.gameObject.tag == "Player").ToArray();
@@ -91,7 +66,6 @@ public class rayFinder : MonoBehaviour
         else
         {
             IsInSight = false;
-            IsClose = false;
             NotFound = true;
         }
 
@@ -116,14 +90,17 @@ public class rayFinder : MonoBehaviour
         if (IsInSight)
         {
             GetComponent<Light2D>().color = new Color32(255, 0, 0, 61); //red
+            sceleton.GetComponent<NavMeshAgent>().speed = 6f;
         }
         else if (IsClose)
         {
             GetComponent<Light2D>().color = new Color32(255, 255, 0, 61); //yellow
+            sceleton.GetComponent<NavMeshAgent>().speed = 4.5f;
         }
         else if (NotFound)
         {
             GetComponent<Light2D>().color = new Color32(255, 255, 255, 61); //white
+            sceleton.GetComponent<NavMeshAgent>().speed = 4f;
         }
     }
 }

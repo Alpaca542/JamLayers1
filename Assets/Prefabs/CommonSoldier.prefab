@@ -291,7 +291,7 @@ MonoBehaviour:
   IsInSight: 0
   IsClose: 0
   NotFound: 0
-  HowFastLoose: 3
+  HowFastLoose: 2
   RayLength: 3
   WhatToHit:
     serializedVersion: 2

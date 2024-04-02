@@ -32,6 +32,8 @@ public class Sceleton : MonoBehaviour
     }
     void StopChasing()
     {
+        rayFinder.GetComponent<rayFinder>().IsClose = false;
+        rayFinder.GetComponent<rayFinder>().IsInSight = false;
         AmIChasing = false;
     }
     private void Start()
@@ -45,6 +47,11 @@ public class Sceleton : MonoBehaviour
         if((collision.gameObject == finish && ToFinish) || (collision.gameObject == start && !ToFinish))
         {
             ToFinish = !ToFinish;
+        }
+        if(collision.gameObject.tag == "Player")
+        {
+            rayFinder.GetComponent<rayFinder>().IsInSight = true;
+            SawAPlayer(collision.gameObject);
         }
         if(collision.gameObject.tag == "Lure")
         {
