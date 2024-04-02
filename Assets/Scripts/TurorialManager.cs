@@ -72,7 +72,7 @@ public class TurorialManager : MonoBehaviour
             robber.GetComponent<SpriteRenderer>().sprite = dierobber;
 
         }
-        if (index == 14 || index == 999)
+        if (index == 14 || index == 18)
         {
             cnv.SetActive(true);
             Camera.main.GetComponent<CameraFolllllllow>().enabled = true;
@@ -87,9 +87,12 @@ public class TurorialManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        index++;
-        cnv.SetActive(false);
-        Panel.SetActive(true);
-        StartCoroutine(Type());
+        if(collision.gameObject.tag == "Player")
+        {
+            index++;
+            cnv.SetActive(false);
+            Panel.SetActive(true);
+            StartCoroutine(Type());
+        }
     }
 }
