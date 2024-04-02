@@ -9,14 +9,43 @@ public class TurorialManager : MonoBehaviour
     public Image Display2;
     public string[] sentences;
     public Sprite[] faces;
-    private int index;
+    public int index;
     public GameObject btnContinue;
+    public GameObject Panel;
+    public GameObject cnv;
     public float typingspeed = 0.02f;
-    
+
+    public GameObject player;
+
+
     IEnumerator Type()
     {
         btnContinue.SetActive(false);
         Display.text = "";
+        //knight = 488 269
+        //bandit = 300 300
+        //wizard = 250 250
+        //statue = 150 250
+        if (faces[index].name == "HeavyBandit_0")
+        {
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 300);
+            Display2.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        }
+        else if (faces[index].name == "HeroKnight_0")
+        {
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(488, 269);
+            Display2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else if (faces[index].name == "Untitled 03-30-2024 07-07-39")
+        {
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(250, 250);
+            Display2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else if (faces[index].name == "TX Props Statue")
+        {
+            Display2.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(150, 250);
+            Display2.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
         Display2.sprite = faces[index];
         foreach (char letter1 in sentences[index].ToCharArray())
         {
@@ -31,7 +60,20 @@ public class TurorialManager : MonoBehaviour
     }
     public void ContinueTyping()
     {
-        index++;
-        StartCoroutine(Type());
+        if(index == 13)
+        {
+            cnv.SetActive(true);
+            Camera.main.GetComponent<CameraFolllllllow>().enabled = true;
+            player.GetComponent<Player>().enabled = true;
+        }
+        if(index+1 >= sentences.Length)
+        {
+            Panel.SetActive(false);
+        }
+        else
+        {
+            index++;
+            StartCoroutine(Type());
+        }
     }
 }
