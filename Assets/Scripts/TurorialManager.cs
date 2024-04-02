@@ -87,6 +87,9 @@ public class TurorialManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        index++;
+        cnv.SetActive(false);
+        Panel.SetActive(true);
         StartCoroutine(Type());
     }
 }
