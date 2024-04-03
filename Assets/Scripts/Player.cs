@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "2";
         yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "1";
+        yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
         if (CurrentDoor.GetComponent<Door>().AmIFinal)
