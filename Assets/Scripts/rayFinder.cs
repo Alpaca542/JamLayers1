@@ -92,15 +92,10 @@ public class rayFinder : MonoBehaviour
             GetComponent<Light2D>().color = new Color32(255, 0, 0, 61); //red
             sceleton.GetComponent<NavMeshAgent>().speed = 6f;
         }
-        else if (IsClose)
-        {
-            GetComponent<Light2D>().color = new Color32(255, 255, 0, 61); //yellow
-            sceleton.GetComponent<NavMeshAgent>().speed = 4.5f;
-        }
-        else if (NotFound)
+        else if (NotFound || IsClose)
         {
             GetComponent<Light2D>().color = new Color32(255, 255, 255, 61); //white
-            sceleton.GetComponent<NavMeshAgent>().speed = 4f;
+            sceleton.GetComponent<NavMeshAgent>().speed = 3f;
         }
     }
 }
