@@ -131,6 +131,8 @@ public class Sceleton : MonoBehaviour
     }
     public void KillPlayer()
     {
+        agent.SetDestination(transform.position);
+        rayFinder.GetComponent<rayFinder>().enabled = false;
         Camera.main.GetComponent<Camera>().orthographicSize = 2;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
         anim.Play(clipHit.name);
