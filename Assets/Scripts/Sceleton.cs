@@ -131,6 +131,8 @@ public class Sceleton : MonoBehaviour
     }
     public void KillPlayer()
     {
+        Camera.main.GetComponent<Camera>().orthographicSize = 2;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
         anim.Play(clipHit.name);
         Invoke(nameof(InvokeKill), 0.5f);
     }

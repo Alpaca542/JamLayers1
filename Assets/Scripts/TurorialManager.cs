@@ -21,7 +21,7 @@ public class TurorialManager : MonoBehaviour
     public Sprite dierobber;
 
     public GameObject player;
-
+    public bool shown = false;
 
     IEnumerator Type()
     {
@@ -87,8 +87,9 @@ public class TurorialManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && !shown)
         {
+            shown = true;
             index++;
             cnv.SetActive(false);
             Panel.SetActive(true);
