@@ -98,9 +98,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Door")
         {
-            CurrentDoor = null;
-            StopCoroutine(coroutine);
             CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);
+            StopCoroutine(coroutine);
+            CurrentDoor = null;
         }
     }
 }
