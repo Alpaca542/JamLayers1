@@ -27,6 +27,7 @@ public class MagicManager : MonoBehaviour
     }
     private void Start()
     {
+        duckstxt.text = Ducks.ToString();
         Time.timeScale = 1;
     }
     public void EnterMagicMode()

@@ -508,7 +508,7 @@ MonoBehaviour:
   rayFinder: {fileID: 3321335606477482438}
   player: {fileID: 0}
   AmIChasing: 0
-  clipHit: {fileID: 0}
+  clipHit: {fileID: 7400000, guid: 75c7030fc774f0040adfefe602ae68e8, type: 2}
   LureLayer:
     serializedVersion: 2
     m_Bits: 8
