@@ -7,4 +7,5 @@ public class Door : MonoBehaviour
 {
     public bool AmIFinal;
     public GameObject txt;
+    public GameObject Canvas;
 }

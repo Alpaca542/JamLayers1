@@ -54,7 +54,7 @@ public class MagicManager : MonoBehaviour
             mousePosition.z = Camera.main.nearClipPlane;
             Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
             worldMousePosition.z = 0;
-            if(Physics2D.OverlapCircle(worldMousePosition, 0.05f))
+            if(Physics2D.OverlapCircle(worldMousePosition, 0.01f))
             {
                 Ducks--;
                 duckstxt.text = Ducks.ToString();

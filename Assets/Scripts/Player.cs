@@ -49,12 +49,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             StopCoroutine(coroutine);
-            CurrentDoor.GetComponent<Door>().txt.SetActive(false);
+            CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);
         }
     }
     IEnumerator DeleteDoor()
     {
-        CurrentDoor.GetComponent<Door>().txt.SetActive(true);
+        CurrentDoor.GetComponent<Door>().Canvas.SetActive(true);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "5";
         yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "4";
@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "2";
         yield return new WaitForSeconds(1f);
         CurrentDoor.GetComponent<Door>().txt.GetComponent<TMP_Text>().text = "1";
-        CurrentDoor.GetComponent<Door>().txt.SetActive(false);
+        CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
         if (CurrentDoor.GetComponent<Door>().AmIFinal)
         {
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         {
             CurrentDoor = null;
             StopCoroutine(coroutine);
-            CurrentDoor.GetComponent<Door>().txt.SetActive(false);
+            CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);
         }
     }
 }
