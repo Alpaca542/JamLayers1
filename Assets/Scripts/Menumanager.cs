@@ -7,13 +7,20 @@ using UnityEngine.SceneManagement;
 public class Menumanager : MonoBehaviour
 {
     public GameObject sparks;
+    public string lvltoopen;
     public void StartTheGame(string lvlname)
     {
-        SceneManager.LoadScene(lvlname);
+        lvltoopen = lvlname;
+        Instantiate(sparks, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+        Invoke(nameof(InvOpenScn), 0.6f);
+    }
+    public void InvOpenScn()
+    {
+        SceneManager.LoadScene(lvltoopen);
     }
     public void OpenLevels()
     {
-        Instantiate(sparks, Vector2.zero, Quaternion.identity);
+        Instantiate(sparks, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
         Invoke(nameof(InvokeOpenScene), 0.6f);
     }
     public void InvokeOpenScene()
@@ -22,7 +29,7 @@ public class Menumanager : MonoBehaviour
     }
     public void OpenMenu()
     {
-        Instantiate(sparks, Vector2.zero, Quaternion.identity);
+        Instantiate(sparks, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
         Invoke(nameof(GoToMenu), 0.6f);
     }
     public void GoToMenu()
