@@ -16,6 +16,7 @@ public class SecondDialogueManager : MonoBehaviour
 
     public GameObject cnv;
     public GameObject Panel;
+    IEnumerator coroutine;
 
     IEnumerator Type()
     {
@@ -41,7 +42,8 @@ public class SecondDialogueManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(Type());
+        coroutine = Type();
+        StartCoroutine(coroutine);
     }
     public void ContinueTyping()
     {
@@ -54,14 +56,15 @@ public class SecondDialogueManager : MonoBehaviour
         else
         {
             index++;
-            StartCoroutine(Type());
+            coroutine = Type();
+            StartCoroutine(coroutine);
         }
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            StopCoroutine(Type());
+            StopCoroutine(coroutine);
             Display.text = sentences[index];
             btnContinue.SetActive(true);
         }

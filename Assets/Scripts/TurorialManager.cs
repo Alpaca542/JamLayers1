@@ -22,6 +22,7 @@ public class TurorialManager : MonoBehaviour
 
     public GameObject player;
     public bool shown = false;
+    IEnumerator coroutine;
 
     IEnumerator Type()
     {
@@ -61,7 +62,8 @@ public class TurorialManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(Type());
+        coroutine = Type();
+        StartCoroutine(coroutine);
     }
     public void ContinueTyping()
     {
@@ -82,7 +84,8 @@ public class TurorialManager : MonoBehaviour
         else
         {
             index++;
-            StartCoroutine(Type());
+            coroutine = Type();
+            StartCoroutine(coroutine);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -93,14 +96,15 @@ public class TurorialManager : MonoBehaviour
             index++;
             cnv.SetActive(false);
             Panel.SetActive(true);
-            StartCoroutine(Type());
+            coroutine = Type();
+            StartCoroutine(coroutine);
         }
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
-            StopCoroutine(Type());
+            StopCoroutine(coroutine);
             Display.text = sentences[index];
             btnContinue.SetActive(true);
         }
