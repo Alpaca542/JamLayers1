@@ -69,13 +69,14 @@ public class Player : MonoBehaviour
         CurrentDoor.GetComponent<SpriteRenderer>().enabled = false;
         if (CurrentDoor.GetComponent<Door>().AmIFinal)
         {
-            Time.timeScale = 0;
             sun.intensity = 1f;
             panel.SetActive(true);
             btn.SetActive(false);
             PlayerPrefs.SetInt("Open", System.Convert.ToInt32(SceneManager.GetActiveScene().name.Replace("Lvl", ""))+1);
+            gameObject.GetComponent<Player>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
-        foreach(BoxCollider2D col in CurrentDoor.GetComponents<BoxCollider2D>())
+        foreach (BoxCollider2D col in CurrentDoor.GetComponents<BoxCollider2D>())
         {
             col.enabled = false;
         }

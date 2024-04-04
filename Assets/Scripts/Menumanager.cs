@@ -20,6 +20,11 @@ public class Menumanager : MonoBehaviour
     {
         SceneManager.LoadScene("LvlMenu");
     }
+    public void OpenMenu()
+    {
+        Instantiate(sparks, Vector2.zero, Quaternion.identity);
+        Invoke(nameof(GoToMenu), 0.6f);
+    }
     public void GoToMenu()
     {
         SceneManager.LoadScene("Menu");

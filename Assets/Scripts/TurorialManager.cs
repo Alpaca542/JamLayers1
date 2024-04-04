@@ -76,10 +76,13 @@ public class TurorialManager : MonoBehaviour
         }
         if (index == 14 || index == 18)
         {
-            cnv.SetActive(true);
             Camera.main.GetComponent<CameraFolllllllow>().enabled = true;
             player.GetComponent<Player>().enabled = true;
             Panel.SetActive(false);
+        }
+        if(index == 18)
+        {
+            cnv.SetActive(true);
         }
         else
         {
