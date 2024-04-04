@@ -9,17 +9,6 @@ public class DieManager : MonoBehaviour
     public GameObject Tutorialmng;
     public void ToTheMenu()
     {
-        if(SceneManager.GetActiveScene().name != "Lvl1")
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else
-        {
-            foreach(GameObject dck in GameObject.FindGameObjectsWithTag("Lure"))
-            {
-                Destroy(dck);
-            }
-            player.transform.position = Tutorialmng.transform.position;
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

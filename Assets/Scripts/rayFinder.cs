@@ -76,13 +76,6 @@ public class rayFinder : MonoBehaviour
             {
                sceleton.GetComponent<Sceleton>().KillPlayer();
             }
-            else
-            {
-                if (hitAttack.collider.gameObject.tag == "Lure")
-                {
-                    Destroy(hitAttack.collider.gameObject);
-                }
-            }
         }
 
 

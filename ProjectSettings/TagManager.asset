@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Decorations
   - walls
+  - bkr
   layers:
   - Default
   - TransparentFX

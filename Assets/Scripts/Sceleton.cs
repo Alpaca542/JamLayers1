@@ -67,7 +67,7 @@ public class Sceleton : MonoBehaviour
         }
         else
         {
-            if (Physics2D.OverlapCircle(transform.position, 5f, LureLayer))
+            if (Physics2D.OverlapCircle(transform.position, 6f, LureLayer))
             {
                 agent.SetDestination(GameObject.FindGameObjectWithTag("Lure").transform.position);
             }
