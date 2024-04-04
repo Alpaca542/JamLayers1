@@ -96,7 +96,6 @@ public class TurorialManager : MonoBehaviour
         if(collision.gameObject.tag == "Player" && !shown)
         {
             shown = true;
-            index++;
             cnv.SetActive(false);
             Panel.SetActive(true);
             coroutine = Type();
