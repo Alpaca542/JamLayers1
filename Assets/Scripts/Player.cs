@@ -41,12 +41,12 @@ public class Player : MonoBehaviour
         }
         rb.velocity = new Vector2(MovementX, MovementY).normalized * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && CurrentDoor != null)
         {
             coroutine = DeleteDoor();
             StartCoroutine(coroutine);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && CurrentDoor != null)
         {
             StopCoroutine(coroutine);
             CurrentDoor.GetComponent<Door>().Canvas.SetActive(false);

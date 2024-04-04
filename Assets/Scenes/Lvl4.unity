@@ -2892,7 +2892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &581642177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47063,12 +47063,13 @@ MonoBehaviour:
   IsInMagicMode: 0
   Ducks: 30
   Smokes: 2
-  AllowSmoke: 0
-  smoketxt: {fileID: 0}
+  AllowSmoke: 1
+  smoketxt: {fileID: 1977777412}
+  baker: {fileID: 1379604424}
   lure: {fileID: 4338007971562068487, guid: 52e50789a30284856b1861656523a4d4, type: 3}
   btnks: {fileID: 899817458}
   duckstxt: {fileID: 1052278385}
-  smoke: {fileID: 0}
+  smoke: {fileID: 6583193941500061597, guid: bda93cb0b2e6649da9662b607dbd2c81, type: 3}
 --- !u!4 &1439038195
 Transform:
   m_ObjectHideFlags: 0
@@ -48858,6 +48859,11 @@ PrefabInstance:
       propertyPath: finish
       value: 
       objectReference: {fileID: 1843163503}
+    - target: {fileID: 7420506635843713830, guid: a847ae7b2c4d944a094a5a8f93a0048f,
+        type: 3}
+      propertyPath: avoidancePriority
+      value: 51
+      objectReference: {fileID: 0}
     - target: {fileID: 8452256337594727181, guid: a847ae7b2c4d944a094a5a8f93a0048f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53682,7 +53688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

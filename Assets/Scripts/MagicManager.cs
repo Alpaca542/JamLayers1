@@ -13,6 +13,7 @@ public class MagicManager : MonoBehaviour
     public int Smokes = 2;
     public bool AllowSmoke;
     public Text smoketxt;
+    public NavMeshPlus.Components.NavMeshSurface baker;
 
     public GameObject lure;
     public ButtonKostil btnks;
@@ -32,6 +33,7 @@ public class MagicManager : MonoBehaviour
     private void Start()
     {
         duckstxt.text = Ducks.ToString();
+        smoketxt.text = Smokes.ToString();
         Time.timeScale = 1;
     }
     public void EnterMagicMode()
@@ -84,6 +86,7 @@ public class MagicManager : MonoBehaviour
                 Smokes--;
                 smoketxt.text = Smokes.ToString();
                 Instantiate(smoke, worldMousePosition, Quaternion.identity);
+                baker.BuildNavMesh();
             }
         }
     }
