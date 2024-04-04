@@ -57,4 +57,13 @@ public class SecondDialogueManager : MonoBehaviour
             StartCoroutine(Type());
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        {
+            StopCoroutine(Type());
+            Display.text = sentences[index];
+            btnContinue.SetActive(true);
+        }
+    }
 }

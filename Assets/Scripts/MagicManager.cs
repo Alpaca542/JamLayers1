@@ -33,7 +33,10 @@ public class MagicManager : MonoBehaviour
     private void Start()
     {
         duckstxt.text = Ducks.ToString();
-        smoketxt.text = Smokes.ToString();
+        if (AllowSmoke)
+        {
+            smoketxt.text = Smokes.ToString();
+        }
         Time.timeScale = 1;
     }
     public void EnterMagicMode()
