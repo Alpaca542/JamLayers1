@@ -10,10 +10,14 @@ public class MagicManager : MonoBehaviour
     public Texture2D cursor;
     public bool IsInMagicMode = false;
     public int Ducks = 10;
+    public int Smokes = 2;
+    public bool AllowSmoke;
+    public Text smoketxt;
 
     public GameObject lure;
     public ButtonKostil btnks;
     public Text duckstxt;
+    public GameObject smoke;
     public void MagicMode()
     {
         if (!IsInMagicMode)
@@ -67,6 +71,19 @@ public class MagicManager : MonoBehaviour
                 Ducks--;
                 duckstxt.text = Ducks.ToString();
                 Instantiate(lure, worldMousePosition, Quaternion.identity);
+            }
+        }
+        if (Input.GetMouseButtonDown(1) && IsInMagicMode && !btnks.isMouseOver && Smokes > 0 && AllowSmoke)
+        {
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.nearClipPlane;
+            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            worldMousePosition.z = 0;
+            if (Physics2D.OverlapCircle(worldMousePosition, 0.01f))
+            {
+                Smokes--;
+                smoketxt.text = Smokes.ToString();
+                Instantiate(smoke, worldMousePosition, Quaternion.identity);
             }
         }
     }
