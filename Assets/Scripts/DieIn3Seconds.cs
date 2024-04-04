@@ -6,6 +6,7 @@ using UnityEngine;
 public class DieIn3Seconds : MonoBehaviour
 {
     public NavMeshPlus.Components.NavMeshSurface baker;
+    public AudioSource aud;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,7 @@ public class DieIn3Seconds : MonoBehaviour
     }
     public void die()
     {
+        aud.PlayOneShot(aud.clip);
         GetComponent<BoxCollider2D>().enabled = false;
         baker.BuildNavMesh();
         Destroy(gameObject);
