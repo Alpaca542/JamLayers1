@@ -441,8 +441,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.57
-  m_BaseOffset: 0.13
+  m_Height: 0.00001
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!61 &5890911379425943139
@@ -477,7 +477,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.012152135, y: 0.16007051}
+  m_Offset: {x: -0.0077795982, y: 0.0055761933}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.63602537, y: 0.19195399}
@@ -488,7 +488,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45379436, y: 0.53638774}
+  m_Size: {x: 0.34593987, y: 0.31484878}
   m_EdgeRadius: 0
 --- !u!114 &5535239311760462268
 MonoBehaviour:
