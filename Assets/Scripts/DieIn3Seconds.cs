@@ -10,12 +10,17 @@ public class DieIn3Seconds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        aud = GetComponent<AudioSource>();
         baker = GameObject.FindGameObjectWithTag("bkr").GetComponent<NavMeshPlus.Components.NavMeshSurface>();
-        Invoke(nameof(die), 3f);
+        Invoke(nameof(die), 2.5f);
     }
     public void die()
     {
-        aud.PlayOneShot(aud.clip);
+        aud.Play();
+        Invoke(nameof(FinalDie), 0.5f);
+    }
+    public void FinalDie()
+    {
         GetComponent<BoxCollider2D>().enabled = false;
         baker.BuildNavMesh();
         Destroy(gameObject);
